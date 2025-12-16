@@ -1,0 +1,164 @@
+
+/* Definerer mine variable i root, med henblik på nem implementering */
+ :root {
+   --baggrundsfarve: #F8F5F1;
+   --tekstfarve: #0000; 
+   --tekstfont: 'Helvetica Neue LT Std', Helvetica, Arial, sans-serif;
+ }
+
+
+
+/* -------------- NAV-DELEN -------------- */
+nav{
+  position: fixed;   /* Fastsætter 'navigationen' */
+  top: 0;         /* Placerer den i toppen */
+  left: 0;           /* Fra venstre kant */
+  width: 100%;       /* Sikrer, at det fylder hele bredden */
+  background-color: var(--baggrundsfarve); /* Tildeler baggrundsfarven */
+  padding: 1rem; /* Laver indvendig afstand */
+  z-index: 1; /* Sikrer at det vises ovenpå andet indhold */
+} 
+
+
+/* ------------ OVERSKRIFT-DELEN ------------- */
+ /* Container der skjuler overflow */
+
+header{
+  padding: 5rem 0 0 0; /* Styler */
+}
+
+.rulleTekst {
+  width: 100%;
+  overflow: hidden; /*Skjuler tekst uden for container*/
+  background: var(--baggrundsfarve);
+  color: rgb(0, 0, 0);
+  font-size: 1100%; /*Ændrer tekststørrelse og angiver det i procenter, så det lidt responsivt*/
+  font-family: var(--tekstfont);
+  font-weight: bold;
+  white-space: nowrap; /*Forhindrer linjeskift */
+  padding: 0;
+  margin: 50px 0 0 0;
+  border-bottom: 1px solid #ddd;
+  }
+  
+  
+  /* Teksten der bevæger sig fra venstre til højre */
+  .rulleTekst span {
+  display: inline-block;  /* Holder teksten på én linje og gør den animerbar */
+  animation: scroll 40s linear infinite; /* Styrer hastigheden og sørger for den er linear */
+  }
+  
+  
+  /* Teksten der bevæger sig fra venstre til højre*/
+  @keyframes scroll {
+  0% { transform: translateX(-100%); } /* Starter helt ude til venstre */
+  100% { transform: translateX(0); } /* Ender i normal position */
+  }
+
+
+
+  /* ------------ BODY-DELEN ------------- */
+
+
+
+p, h2, h3{
+  font-family: var(--tekstfont);
+  font-weight: normal; 
+}
+
+h3{
+  margin-top: 50px;
+}
+
+body{
+  background-color: var(--baggrundsfarve);
+}
+
+  /* Selve området */
+.dropdown {
+  width: 100%; /*Sikrer mig, at det fylder hele bredden*/
+  font-family: var(--tekstfont);
+  margin: 10rem 0rem 10rem 0rem; /*Tilføjer afstand over og under dropdown*/
+}
+
+/* Hver dropdown-boks */
+details {
+  border-bottom: 1px solid #ddd;
+  padding: 1.5rem 0;
+}
+
+/* Teksten du klikker på */
+summary {
+  font-size: 1.9rem; /*Tilpasser font størrelsen*/
+  cursor: pointer; /*Ændrer kursøren ved hover for brugervenlighed*/
+  list-style: none; /*Fjerner unødvendig styling for design*/
+  position: relative; 
+  padding-right: 2rem; /* Gør plads til pilen */
+}
+
+/* Fjern standardpilen */
+summary::-webkit-details-marker {
+  display: none;
+}
+
+/* LAV EGEN PIL */
+summary::after {
+  content: "⌄";      /* lille pil ned */
+  position: absolute;
+  right: 0;
+  top: 0;
+  font-size: 1.2rem;
+  transition: transform 0.2s;
+}
+
+/* Når dropdown er ÅBEN → pilen roterer */
+details[open] summary::after {
+  transform: rotate(180deg);
+}
+
+/* Indholdet indeni dropdown */
+.indhold {
+  padding: 0.5rem 0 0;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+
+  /* ------------ FOOTER-DELEN ------------- */
+
+  footer{
+    width: 100%;       
+    background-color: var(--baggrundsfarve); /* Tildeler det en anden baggrundsfarve for at drage yderligere opmærksomhed */
+    padding: 0;
+    display: flex;
+    justify-content: space-between; /* Skubber tekst og kontaktinfo til hver sin side */
+    border-top: 1px solid #ddd;
+    padding-top: 25px;
+  }
+
+  #sidsteInfo{
+    display: flex; /*Muliggøre manipulation af tekst layout*/
+    flex-direction: column; /*Placerer teksterne under hinanden*/
+    margin-top: 50px;
+  }
+
+  #sidsteInfo p{
+    margin: 0;
+  }
+
+  #minInfo{
+    display: flex; /*Muliggøre manipulation af tekst layout*/
+    flex-direction: column; /*Placerer teksterne under hinanden*/
+    font-size: 150%;
+    text-align: right;
+  }
+
+  #minInfo a{
+    text-decoration: none; /*Fjerner understregning ved links*/
+    color: inherit; /*Arver farven fra tidligere*/
+  }
+
+  #minInfo a:hover {
+    text-decoration: underline; /* Tilføjer understregning ved hover, for brugervenlighed og for en CTA følelse */
+  }
+  
